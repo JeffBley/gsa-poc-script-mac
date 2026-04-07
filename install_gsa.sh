@@ -147,7 +147,7 @@ log "  Restart any open browser windows for the change to take effect."
 
 # ---------- Launch the client ----------
 
-GSA_APP="/Applications/Global Secure Access.app"
+GSA_APP="/Applications/GlobalSecureAccessClient.app"
 
 log "------------------------------------------------------------"
 log "Global Secure Access client installation complete."
