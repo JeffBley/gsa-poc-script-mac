@@ -147,8 +147,6 @@ log "  Restart any open browser windows for the change to take effect."
 
 # ---------- Launch the client ----------
 
-GSA_APP="/Applications/GlobalSecureAccessClient.app"
-
 log "------------------------------------------------------------"
 log "Global Secure Access client installation complete."
 log "You may need to approve the system extension in:"
@@ -157,9 +155,11 @@ log "Restart Chrome/Edge to apply the QUIC policy."
 log "------------------------------------------------------------"
 
 log "Launching Global Secure Access client..."
-if [[ -d "$GSA_APP" ]]; then
+GSA_APP=$(find /Applications -maxdepth 1 -iname "GlobalSecureAccess*" 2>/dev/null | head -1)
+if [[ -n "$GSA_APP" ]]; then
     open "$GSA_APP"
-    log "Client launched. Check the menu bar for the GSA icon."
+    log "Client launched: $GSA_APP"
+    log "Check the menu bar for the GSA icon."
 else
-    warn "App bundle not found at '$GSA_APP' — launch it manually from /Applications."
+    warn "Could not find GlobalSecureAccess app in /Applications — launch it manually."
 fi
