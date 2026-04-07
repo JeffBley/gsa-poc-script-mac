@@ -155,11 +155,10 @@ log "Restart Chrome/Edge to apply the QUIC policy."
 log "------------------------------------------------------------"
 
 log "Launching Global Secure Access client..."
-GSA_APP=$(find /Applications -maxdepth 1 -iname "GlobalSecureAccess*" 2>/dev/null | head -1)
-if [[ -n "$GSA_APP" ]]; then
+GSA_APP="/Applications/GlobalSecureAccessClient/Global Secure Access Client.app"
+if [[ -d "$GSA_APP" ]]; then
     open "$GSA_APP"
-    log "Client launched: $GSA_APP"
-    log "Check the menu bar for the GSA icon."
+    log "Client launched. Check the menu bar for the GSA icon."
 else
-    warn "Could not find GlobalSecureAccess app in /Applications — launch it manually."
+    warn "App not found at '$GSA_APP' — launch it manually from /Applications/GlobalSecureAccessClient/."
 fi
