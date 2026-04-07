@@ -111,15 +111,14 @@ log "  HideQuitButton                 = false  (Quit: SHOWN)"
 # Note: Safari does not expose a policy for this — QUIC in Safari is
 # controlled at the OS network layer and cannot be disabled via a plist.
 
-MANAGED_PREFS_DIR="/Library/Managed Preferences"
+PREFS_DIR="/Library/Preferences"
 
 disable_quic() {
     local domain="$1"
     local label="$2"
-    local plist="${MANAGED_PREFS_DIR}/${domain}.plist"
+    local plist="${PREFS_DIR}/${domain}.plist"
 
     log "Disabling QUIC for ${label}..."
-    mkdir -p "$MANAGED_PREFS_DIR"
     defaults write "$plist" QuicAllowed -bool false
     chmod 644 "$plist" 2>/dev/null || true
     log "  Written: ${plist}"

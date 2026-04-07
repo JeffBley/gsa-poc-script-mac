@@ -89,13 +89,13 @@ log "GSA button preferences removed."
 # their built-in default (QUIC enabled).
 # If no other keys remain in the plist, the file is deleted entirely.
 
-MANAGED_PREFS_DIR="/Library/Managed Preferences"
+PREFS_DIR="/Library/Preferences"
 
 log "Restoring QUIC policy for Google Chrome..."
-remove_plist_key "${MANAGED_PREFS_DIR}/com.google.Chrome.plist" "QuicAllowed"
+remove_plist_key "${PREFS_DIR}/com.google.Chrome.plist" "QuicAllowed"
 
 log "Restoring QUIC policy for Microsoft Edge..."
-remove_plist_key "${MANAGED_PREFS_DIR}/com.microsoft.Edge.plist" "QuicAllowed"
+remove_plist_key "${PREFS_DIR}/com.microsoft.Edge.plist" "QuicAllowed"
 
 log "QUIC policy removed. Restart Chrome/Edge for the change to take effect."
 
