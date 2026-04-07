@@ -145,9 +145,21 @@ fi
 log "QUIC disabled for Chrome and Edge via managed policy."
 log "  Restart any open browser windows for the change to take effect."
 
+# ---------- Launch the client ----------
+
+GSA_APP="/Applications/Global Secure Access.app"
+
 log "------------------------------------------------------------"
 log "Global Secure Access client installation complete."
 log "You may need to approve the system extension in:"
 log "  System Settings > Privacy & Security"
 log "Restart Chrome/Edge to apply the QUIC policy."
 log "------------------------------------------------------------"
+
+log "Launching Global Secure Access client..."
+if [[ -d "$GSA_APP" ]]; then
+    open "$GSA_APP"
+    log "Client launched. Check the menu bar for the GSA icon."
+else
+    warn "App bundle not found at '$GSA_APP' — launch it manually from /Applications."
+fi
